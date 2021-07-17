@@ -1,5 +1,6 @@
 import Lance from '@/components/Lance'
 import { mount } from '@vue/test-utils'
+import { RuleTester } from 'eslint'
 
 describe('A bid with no minimum value', () => {
   test('Does not accept negative bids', () => {
@@ -45,7 +46,7 @@ describe('A bid with no minimum value', () => {
 describe('A bid with minimum value', () => {
   test('All bids must have an amount greater than the minimum entered.', () => {
     const wrapper = mount(Lance, {
-      // Valor minímo é passado via prop
+      // Minimum value is passed via prop
       propsData: {
         lanceMinimo: 300
       }
@@ -55,5 +56,18 @@ describe('A bid with minimum value', () => {
     wrapper.trigger('submit')
     const lancesEmitidos = wrapper.emitted('novo-lance')
     expect(lancesEmitidos).toHaveLength(1)
+  })
+  test('Issue the expected value of a valid bid', () => {
+    const wrapper = mount(Lance, {
+      propsData: {
+        lanceMinimo: 300
+      }
+    })
+    const input = wrapper.find('input')
+    input.setValue(400)
+    wrapper.trigger('submit')
+    const lancesEmitidos = wrapper.emitted('novo-lance')
+    const valorDoLance = parseInt(lancesEmitidos[0][0])
+    expect(valorDoLance).toBe(400)
   })
 })
