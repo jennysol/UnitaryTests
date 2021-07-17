@@ -82,8 +82,9 @@ describe('A bid with minimum value', () => {
     // Waiting for DOM rendering
     await wrapper.vm.$nextTick()
     // capture our alert
-    const msgError = wrapper.find('p.alert').element
+    const msgError = wrapper.find('p.alert').element.textContent
+    const msgEsperada = 'O valor mínimo para o lance é de R$ 300'
     // wait for it to exist
-    expect(msgError).toBeTruthy()
+    expect(msgError).toContain(msgEsperada)
   })
 })
