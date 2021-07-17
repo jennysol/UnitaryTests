@@ -35,5 +35,21 @@
     "eslint-plugin-vue": "^6.2.2",
     "flush-promises": "^1.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "## Setup do Projeto ``` npm install ```",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennysol/UnitaryTests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennysol/UnitaryTests/issues"
+  },
+  "homepage": "https://github.com/jennysol/UnitaryTests#readme"
 }
