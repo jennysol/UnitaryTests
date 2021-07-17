@@ -70,4 +70,20 @@ describe('A bid with minimum value', () => {
     const valorDoLance = parseInt(lancesEmitidos[0][0])
     expect(valorDoLance).toBe(400)
   })
+  test('Bids with values ​​less than the minimum informed are not accepted', async () => {
+    const wrapper = mount(Lance, {
+      propsData: {
+        lanceMinimo: 300
+      }
+    })
+    const input = wrapper.find('input')
+    input.setValue(100)
+    wrapper.trigger('submit')
+    // Waiting for DOM rendering
+    await wrapper.vm.$nextTick()
+    // capture our alert
+    const msgError = wrapper.find('p.alert').element
+    // wait for it to exist
+    expect(msgError).toBeTruthy()
+  })
 })
