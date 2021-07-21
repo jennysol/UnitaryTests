@@ -23,7 +23,7 @@ describe('A new auction must be created.', () => {
 
     wrapper.find('.produto').setValue('Book')
     wrapper.find('.descricao').setValue('Conteúdo maravilhoso')
-    wrapper.find('.value').setValue(50)
+    wrapper.find('.valor').setValue(80)
     wrapper.find('form').trigger('submit')
 
     expect(createLeilao).toHaveBeenCalled()
