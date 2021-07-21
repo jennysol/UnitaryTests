@@ -33,4 +33,18 @@ describe('An evaluator that connects with the api', () => {
 
     expect(totalLeiloesExibidos).toBe(leiloes.length)
   })
+  test('If no auction is computed by the api', async () => {
+    getLeiloes.mockResolvedValueOnce([])
+
+    const wrapper = mount(Avaliador, {
+      stubs: {
+        RouterLink: RouterLinkStub
+      }
+    })
+    await flushPromises()
+
+    const totalLeiloesExibidos = wrapper.findAll('.leilao').length
+
+    expect(totalLeiloesExibidos).toBe(0)
+  })
 })
